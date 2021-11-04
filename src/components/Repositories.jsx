@@ -1,4 +1,4 @@
-const Repos = ({ repo }) => {
+const Repositories = ({ repo }) => {
     return (
         <div className="sm:px-36 lg:px-96 py-1 flex flex-wrap justify-between space-y-6 lg:space-y-3">
             <div className="border-solid border p-2 border-black dark:border-gray-600 w-full">
@@ -8,7 +8,7 @@ const Repos = ({ repo }) => {
                 </a>
                 <div className='text-sm flex justify-between'>
                     <p>Stars: {repo.stargazers_count}</p>
-                    <p className='border-solid border rounded-full px-2 border-black dark:border-gray-600'>{repo.language}</p>
+                    <p className='border-solid border rounded-full px-2 border-black dark:border-gray-600'>{repo.language ? repo.language : 'No Data'}</p>
 
                 </div>
             </div>
@@ -16,4 +16,4 @@ const Repos = ({ repo }) => {
     )
 }
 
-export default Repos
+export default Repositories

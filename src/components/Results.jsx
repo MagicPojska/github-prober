@@ -1,36 +1,32 @@
 import { useEffect } from "react"
 import { useResultContext } from "../context/ResultsContextProvider"
 import Loading from "./Loading"
-import Repos from "./Repos"
+import ProfileCard from "./ProfileCard"
+import Repositories from "./Repositories"
 
 const Results = () => {
-    const { results, repos, isLoading, getResults } = useResultContext()
-    const term = 'ChrisTitusTech'
+    const { results, repos, isLoading, getResults, searchTerm } = useResultContext()
 
     useEffect(() => {
-        getResults(term)
-    }, [])
+        if (searchTerm) {
+            getResults(searchTerm)
+        }
+    }, [searchTerm])
 
     if (isLoading) return <Loading />
     return (
         <>
-            <div className="border w-72 md:w-96 relative flex flex-col mx-auto shadow-lg m-5">
-                <div className="w-full flex m-3 ml-4 text-black dark:text-white">
-                    <img className="w-28 h-28 p-1 bg-white rounded-full" src={`${results.avatar_url}`} alt="" />
-                    <div className="title mt-9 ml-3 font-bold flex flex-col">
-                        <div className="break-words">{results.name}</div>
-                        <div className="font-semibold text-sm italic dark">{results.login}</div>
-                    </div>
-                </div>
-                <div className="absolute bottom-0 font-bold right-0 text-xs text-gray-900 dark:text-gray-300 space-x-0 my-3.5 mr-3">
-                    <a href={`${results.html_url}`} target="_blank" rel="noreferrer" className="border rounded-l-2xl rounded-r-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">Profile</a>
-                </div>
-            </div>
+            {results.id ? (
+                <>
+                    <ProfileCard results={results} />
+                    {repos.map((repo) => (
+                        <Repositories key={repo.id} repo={repo} />
+                    ))}
+                </>
+            ) : (
+                <p className='w-full text-lg text-center pt-10'>Enter an existing GitHub username</p>
+            )}
 
-
-            {repos.map((repo) => (
-                <Repos key={repo.id} repo={repo} />
-            ))}
         </>
     )
 }

@@ -8,24 +8,28 @@ export const ContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getResults = async (term) => {
     setIsLoading(true);
 
-    //Instead of term I will use search term
-    const response = await axios.get(`${baseUrl}/users/${term}`, {
-      headers: {
-        Authorization: "Bearer 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",
-      },
-    });
-    //Getting all the repos from the user
-    const repo = await axios.get(`${response.data.repos_url}`, {
-      headers: {
-        Authorization: "Bearer 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",
-      },
-    });
-    setResults(response.data);
-    setRepos(repo.data);
+    try {
+      const response = await axios.get(`${baseUrl}/users/${term}`, {
+        headers: {
+          Authorization: "Bearer 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",
+        },
+      });
+      //Getting all the repos from the user
+      const repo = await axios.get(`${response.data.repos_url}`, {
+        headers: {
+          Authorization: "Bearer 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",
+        },
+      });
+      setResults(response.data);
+      setRepos(repo.data);
+    } catch (error) {
+      console.log(error);
+    }
     setIsLoading(false);
   };
 
@@ -35,6 +39,8 @@ export const ContextProvider = ({ children }) => {
         getResults,
         results,
         repos,
+        searchTerm,
+        setSearchTerm,
         isLoading,
       }}
     >
