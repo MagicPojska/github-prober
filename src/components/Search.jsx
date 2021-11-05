@@ -18,7 +18,7 @@ export const Search = () => {
                 value={text}
                 type="text"
                 className="w-80 md:w-80 lg:w-96 h-10 dark:bg-gray-200  border rounded-full shadow-sm outline-none p-6 text-black hover:shadow-lg"
-                placeholder="🔎 Search GitHub Prober"
+                placeholder="🔎 Search GitHub Users"
                 onChange={(e) => setText(e.target.value)}
             />
             {text !== '' && (

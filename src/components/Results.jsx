@@ -16,7 +16,7 @@ const Results = () => {
     if (isLoading) return <Loading />
     return (
         <>
-            {results.id ? (
+            {results.length !== 0 ? (
                 <>
                     <ProfileCard results={results} />
                     {repos.map((repo) => (

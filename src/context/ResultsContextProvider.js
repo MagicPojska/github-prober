@@ -14,6 +14,7 @@ export const ContextProvider = ({ children }) => {
     setIsLoading(true);
 
     try {
+      setResults([]);
       const response = await axios.get(`${baseUrl}/users/${term}`, {
         headers: {
           Authorization: "Bearer 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",
@@ -30,6 +31,7 @@ export const ContextProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+
     setIsLoading(false);
   };
 
