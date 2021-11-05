@@ -1,4 +1,10 @@
+import { useResultContext } from "../context/ResultsContextProvider"
+
 const ProfileCard = ({ results }) => {
+    const { postResults } = useResultContext()
+    const saveData = () => {
+        postResults(results)
+    }
     return (
         <div className="border w-72 md:w-96 relative flex flex-col mx-auto shadow-lg m-5">
             <div className="w-full flex m-3 ml-4 text-black dark:text-white">
@@ -10,6 +16,7 @@ const ProfileCard = ({ results }) => {
             </div>
             <div className="absolute bottom-0 font-bold right-0 text-xs text-gray-900 dark:text-gray-300 space-x-0 my-3.5 mr-3">
                 <a href={`${results.html_url}`} target="_blank" rel="noreferrer" className="border rounded-l-2xl rounded-r-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">Profile</a>
+                <button onClick={() => saveData()} className="add border rounded-r-2xl rounded-l-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">Save Data</button>
             </div>
         </div>
     )

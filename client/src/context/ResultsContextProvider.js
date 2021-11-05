@@ -3,6 +3,7 @@ import axios from "axios";
 
 const ResultContext = createContext();
 const baseUrl = "https://api.github.com";
+const postUrl = "http://localhost:8080";
 
 export const ContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
@@ -35,10 +36,20 @@ export const ContextProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const postResults = async (postData) => {
+    try {
+      await axios.post(`${postUrl}/postdata`, postData);
+      console.log(postData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ResultContext.Provider
       value={{
         getResults,
+        postResults,
         results,
         repos,
         searchTerm,
