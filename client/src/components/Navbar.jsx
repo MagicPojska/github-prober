@@ -1,7 +1,6 @@
 import { Search } from './Search'
 import { Link, Route, Routes } from 'react-router-dom'
 
-
 const Navbar = ({ darkTheme, setDarkTheme }) => {
     return (
         <div className="p-3 flex flex-wrap sm:justify-between justify-center items-center border-b dark:border-gray-700 border-gray-200 ">

@@ -3,7 +3,7 @@ import fs from "fs";
 export const createData = async (req, res) => {
   const data = req.body;
   const jsonString = JSON.stringify(data);
-  const fileName = data.login ? data.login : data[0].name;
+  const fileName = data.login ? data.login : data.name;
 
   // Here goes the logic for saving data to json file
   fs.writeFile(`files/${fileName}.json`, jsonString, (err) => {
