@@ -39,7 +39,6 @@ export const ContextProvider = ({ children }) => {
   const postResults = async (postData) => {
     try {
       await axios.post(`${postUrl}/postdata`, postData);
-      console.log(postData);
     } catch (error) {
       console.log(error);
     }
