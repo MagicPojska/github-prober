@@ -4,15 +4,12 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
-const GITHUB_CLIENT_ID = "Iv1.290a2b0674206902";
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET_CODE;
-const secret = process.env.SECRET;
 const COOKIE_NAME = "github-jwt";
 
 const getGithubUser = async (code) => {
   const githubToken = await axios
     .post(
-      `https://github.com/login/oauth/access_token?client_id=${GITHUB_CLIENT_ID}&client_secret=${GITHUB_CLIENT_SECRET}&code=${code}`
+      `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}&code=${code}`
     )
     .then((res) => res.data)
 
@@ -45,7 +42,7 @@ export const getUser = async (req, res) => {
 
   const githubUser = await getGithubUser(code);
 
-  const token = jwt.sign(githubUser, secret);
+  const token = jwt.sign(githubUser, process.env.SECRET);
 
   res.cookie(COOKIE_NAME, token, {
     httpOnly: true,
@@ -59,7 +56,7 @@ export const getCookie = (req, res) => {
   const cookie = req.cookies[COOKIE_NAME];
 
   try {
-    const decode = jwt.verify(cookie, secret);
+    const decode = jwt.verify(cookie, process.env.SECRET);
 
     return res.send(decode);
   } catch (e) {
@@ -72,5 +69,4 @@ export const deleteCookie = (req, res) => {
     .status(200)
     .clearCookie("github-jwt", { path: "/" })
     .send("Cookie deleted");
-  console.log("Cleared");
 };

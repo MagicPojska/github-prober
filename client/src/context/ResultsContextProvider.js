@@ -3,8 +3,7 @@ import axios from "axios";
 
 const ResultContext = createContext();
 const baseUrl = "https://api.github.com";
-const postUrl = "http://localhost:8080";
-const cookieUrl = "http://localhost:8080/api/me";
+const serverUrl = "http://localhost:8080";
 
 export const ContextProvider = ({ children }) => {
   // Result state is data from users info after the searchTerm has been rendered
@@ -22,13 +21,13 @@ export const ContextProvider = ({ children }) => {
       setResults([]);
       const response = await axios.get(`${baseUrl}/users/${term}`, {
         headers: {
-          Authorization: "Bearer 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",
+          Authorization: `Bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
         },
       });
       //Getting all the repos from the user
       const repo = await axios.get(`${response.data.repos_url}`, {
         headers: {
-          Authorization: "Bearer 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",
+          Authorization: `Bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
         },
       });
       setResults(response.data);
@@ -43,7 +42,7 @@ export const ContextProvider = ({ children }) => {
   //Function for posting data to server
   const postResults = async (postData) => {
     try {
-      await axios.post(`${postUrl}/postdata`, postData);
+      await axios.post(`${serverUrl}/postdata`, postData);
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +51,7 @@ export const ContextProvider = ({ children }) => {
   // Check if cookie exists on browser
   const checkCookie = async () => {
     const usr = await axios
-      .get(cookieUrl, {
+      .get(`${serverUrl}/api/me`, {
         withCredentials: true,
       })
       .then((res) => res.data);
@@ -61,7 +60,9 @@ export const ContextProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.get("http://localhost:8080/api/logout", {
+
+    await axios.get(`${serverUrl}/api/logout`, {
+
       withCredentials: true,
     });
     setUser(null);

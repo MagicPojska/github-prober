@@ -1,11 +1,5 @@
 const Login = () => {
-    const GITHUB_CLIENT_ID = 'Iv1.290a2b0674206902'
-    const githubRedirectURL = 'http://localhost:8080/auth/github'
-    const path = '/'
 
-    // <div className='mx-auto pt-10'>
-    //     <a href={`https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubRedirectURL}?path=${path}&scope=user:email`} className='border rounded-md p-3'>Login</a>
-    // </div>
     return (
         <div className='pt-10 px-4'>
             <div id="whoobe-3fery" className="w-full mx-auto sm:w-96 justify-center items-center bg-white shadow-lg rounded-lg flex flex-col">
@@ -13,7 +7,7 @@ const Login = () => {
                 <div className="w-full p-4 justify-start flex flex-col">
                     <h4 className="border-b-2 border-gray-900 text-3xl text-gray-900">Welcome to Github Prober</h4>
                     <p className="my-4 text-gray-700">You can use this app to search users on GitHub, edit their profile or repository info and save it localy to .json file. First you need to login with your GitHub account!</p>
-                    <a href={`https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubRedirectURL}?path=${path}&scope=user:email`} className="my-4 px-4 py-2 text-center text-white hover:bg-gray-600 bg-gray-800">Login</a>
+                    <a href={`https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&redirect_uri=http://localhost:8080/auth/github?path=/&scope=user:email`} className="my-4 px-4 py-2 text-center text-white hover:bg-gray-600 bg-gray-800">Login with GitHub</a>
                 </div>
             </div>
         </div>
