@@ -5,25 +5,22 @@ import Footer from "./components/Footer"
 import Login from "./components/Login"
 import Navbar from "./components/Navbar"
 import Results from "./components/Results"
-import axios from 'axios'
+import { useResultContext } from "./context/ResultsContextProvider"
 
 
 const App = () => {
   const [darkTheme, setDarkTheme] = useState(true)
-  const [user, setUser] = useState(null)
+  const { checkCookie, user } = useResultContext()
 
   useEffect(() => {
     (async function () {
-      const usr = await axios
-        .get(`http://localhost:8080/api/me`, {
-          withCredentials: true,
-        })
-        .then((res) => res.data);
-
-      setUser(usr);
+      try {
+        await checkCookie()
+      } catch (error) {
+        console.log(error)
+      }
     })();
   }, []);
-  console.log(user)
   return (
     <div className={darkTheme ? 'dark' : ''}>
       <div className='bg-gray-100 dark:bg-black dark:text-gray-200 min-h-screen'>
@@ -34,7 +31,7 @@ const App = () => {
             <Route path='/' element={<Results />} />
           </Routes>
         </>
-          : (<Login user={user} setUser={setUser} />)}
+          : (<Login />)}
         <Footer />
       </div>
     </div>

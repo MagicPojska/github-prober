@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const ProfileCard = ({ results }) => {
     return (
-        <div className="border w-72 md:w-96 relative flex flex-col mx-auto shadow-lg m-5">
+        <div className="border w-80 md:w-96 relative flex flex-col mx-auto shadow-lg m-5">
             <div className="w-full flex m-3 ml-4 text-black dark:text-white">
                 <img className="w-28 h-28 p-1 bg-white rounded-full" src={`${results.avatar_url}`} alt="" />
                 <div className="title mt-9 ml-3 font-bold flex flex-col">

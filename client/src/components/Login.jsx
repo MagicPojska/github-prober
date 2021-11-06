@@ -1,5 +1,3 @@
-import axios from "axios"
-
 const Login = () => {
     const GITHUB_CLIENT_ID = 'Iv1.290a2b0674206902'
     const githubRedirectURL = 'http://localhost:8080/auth/github'

@@ -44,7 +44,6 @@ export const getUser = async (req, res) => {
   }
 
   const githubUser = await getGithubUser(code);
-  console.log(githubUser);
 
   const token = jwt.sign(githubUser, secret);
 
