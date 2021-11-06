@@ -63,7 +63,6 @@ This is a project built for searching GitHub users and their repositories. After
 * [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 * [Dotenv](https://www.npmjs.com/package/dotenv)
-* 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -79,7 +78,7 @@ Install NPM
   npm install npm@latest -g
   ```
 
-### Installation
+### Preparation
 
 
 1. Login to your GitHub account, go to settings, then Developer Settings and make a new GitHub App. <br />
@@ -103,18 +102,26 @@ Uncheck WebHook! After that save your Client ID and Generate new client secret k
     GITHUB_CLIENT_ID = Your Client ID <br />
     GITHUB_CLIENT_SECRET = Your Client Secret <br />
     SECRET = Your secret key <br />
-7. Go back to root folder and enter client folder
+7. Start server
+   ```sh
+   npm start
+   ```
+8. Go back to root folder and enter client folder
    ```sh
    cd ..
    cd client
    ```
-8. Install NPM packages
+9. Install NPM packages
    ```sh
    npm install
    ```
-9. Make .env file and paste your Client ID again and Personal Access Token in variables like this: <br />
+10. Make .env file and paste your Client ID again and Personal Access Token in variables like this: <br />
     REACT_APP_GITHUB_CLIENT_ID = Your Client ID <br />
     REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN = Your Personal Access Token <br />
+7. Start client
+   ```sh
+   npm start
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
