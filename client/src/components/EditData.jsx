@@ -78,7 +78,6 @@ const EditData = () => {
                             type="text"
                             value={data.created_at}
                             onChange={(e) => setData({ ...data, created_at: e.target.value })}
-                            placeholder="Created At"
                             className="px-8 w-full border rounded py-2 text-gray-700 focus:outline-none"
                         />
                     )}
@@ -101,7 +100,6 @@ const EditData = () => {
                             type="text"
                             value={data.clone_url}
                             onChange={(e) => setData({ ...data, clone_url: e.target.value })}
-                            placeholder="Clone url"
                             className="px-8 w-full border rounded py-2 text-gray-700 focus:outline-none"
                         />
                     )}
