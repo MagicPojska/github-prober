@@ -43,7 +43,53 @@
 ## About The Project
 
 This is a project built for searching GitHub users and their repositories. After a successful login you will be greeted with a navbar and within it an input field for searching. Try searching some of your favourite GitHub users. You don't have to press enter because I used debounce to submit your search term every 700ms after the typing stops.
+ <br />
+ 
+ ### Root directory layout
 
+    .
+    ├── client   
+    ├── server
+    └── README.md
+    
+  
+<br />
+  
+### Client directory layout
+
+    .
+    ├── public
+    ├── src
+    ├── .gitignore
+    ├── craco.config.js
+    ├── package.lock.json
+    ├── package.json
+    └── tailwind.config.js
+
+<br />
+  
+### SRC directory layout
+
+    .
+    ├── components
+    ├── context
+    ├── App.jsx
+    ├── index.css
+    └── index.js
+    
+<br />
+  
+### Server directory layout
+
+    .
+    ├── controllers
+    ├── files
+    ├── routes
+    ├── .gitignore
+    ├── index.js
+    ├── package.lock.json
+    └── package.json
+    
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
