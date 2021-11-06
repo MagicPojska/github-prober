@@ -11,7 +11,7 @@ export const ContextProvider = ({ children }) => {
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   //Function for fetching user via searchTerm
   const getResults = async (term) => {
@@ -59,8 +59,11 @@ export const ContextProvider = ({ children }) => {
     setUser(usr);
   };
 
-  const logout = () => {
-    setUser();
+  const logout = async () => {
+    await axios.get("http://localhost:8080/api/logout", {
+      withCredentials: true,
+    });
+    setUser(null);
   };
 
   return (

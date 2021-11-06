@@ -21,6 +21,8 @@ const App = () => {
       }
     })();
   }, []);
+
+
   return (
     <div className={darkTheme ? 'dark' : ''}>
       <div className='bg-gray-100 dark:bg-black dark:text-gray-200 min-h-screen'>

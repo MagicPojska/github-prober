@@ -66,3 +66,11 @@ export const getCookie = (req, res) => {
     return res.send(null);
   }
 };
+
+export const deleteCookie = (req, res) => {
+  res
+    .status(200)
+    .clearCookie("github-jwt", { path: "/" })
+    .send("Cookie deleted");
+  console.log("Cleared");
+};
