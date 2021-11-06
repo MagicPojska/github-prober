@@ -17,7 +17,6 @@ const EditData = () => {
                 : Object.assign({}, ...repos.filter((repo) => repo.id == id))
         );
     }, []);
-    console.log(data);
 
     const handleSubmit = (e) => {
         e.preventDefault();
