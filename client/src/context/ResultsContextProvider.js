@@ -7,6 +7,7 @@ const postUrl = "http://localhost:8080";
 const cookieUrl = "http://localhost:8080/api/me";
 
 export const ContextProvider = ({ children }) => {
+  // Result state is data from users info after the searchTerm has been rendered
   const [results, setResults] = useState([]);
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
