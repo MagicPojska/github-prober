@@ -4,13 +4,17 @@ import axios from "axios";
 const ResultContext = createContext();
 const baseUrl = "https://api.github.com";
 const postUrl = "http://localhost:8080";
+const cookieUrl = "http://localhost:8080/api/me";
 
 export const ContextProvider = ({ children }) => {
+  // Result state is data from users info after the searchTerm has been rendered
   const [results, setResults] = useState([]);
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [user, setUser] = useState(null);
 
+  //Function for fetching user via searchTerm
   const getResults = async (term) => {
     setIsLoading(true);
 
@@ -36,12 +40,31 @@ export const ContextProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  //Function for posting data to server
   const postResults = async (postData) => {
     try {
       await axios.post(`${postUrl}/postdata`, postData);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // Check if cookie exists on browser
+  const checkCookie = async () => {
+    const usr = await axios
+      .get(cookieUrl, {
+        withCredentials: true,
+      })
+      .then((res) => res.data);
+
+    setUser(usr);
+  };
+
+  const logout = async () => {
+    await axios.get("http://localhost:8080/api/logout", {
+      withCredentials: true,
+    });
+    setUser(null);
   };
 
   return (
@@ -54,6 +77,10 @@ export const ContextProvider = ({ children }) => {
         searchTerm,
         setSearchTerm,
         isLoading,
+        user,
+        setUser,
+        checkCookie,
+        logout,
       }}
     >
       {children}
