@@ -5,13 +5,16 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { ContextProvider } from "./context/ResultsContextProvider";
+import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
-  <ContextProvider>
-    <Router>
-      <App />
-    </Router>
-  </ContextProvider>,
+  <CookiesProvider>
+    <ContextProvider>
+      <Router>
+        <App />
+      </Router>
+    </ContextProvider>
+  </CookiesProvider>,
 
   document.getElementById("root")
 );

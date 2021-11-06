@@ -60,7 +60,9 @@ export const ContextProvider = ({ children }) => {
   };
 
   const logout = async () => {
+
     await axios.get(`${serverUrl}/api/logout`, {
+
       withCredentials: true,
     });
     setUser(null);
