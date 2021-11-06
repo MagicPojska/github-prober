@@ -50,13 +50,20 @@ This is a project built for searching GitHub users and their repositories. After
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [React.js](https://reactjs.org/)
 * [Tailwind](https://tailwindcss.com/)
 * [NodeJS](https://nodejs.org/en/)
 * [ExpressJS](https://expressjs.com/)
 * [GitHub OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps)
+* [ExpressJS](https://expressjs.com/)
+* [Axios](https://www.npmjs.com/package/axios)
+* [React Loader Spinner](https://www.npmjs.com/package/react-loader-spinner)
+* [Use Debounce](https://www.npmjs.com/package/use-debounce)
+* [Cookie Parser](https://www.npmjs.com/package/cookie-parser)
+* [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
+* [Nodemon](https://www.npmjs.com/package/nodemon)
+* [Dotenv](https://www.npmjs.com/package/dotenv)
+* 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -117,7 +124,21 @@ Uncheck WebHook! After that save your Client ID and Generate new client secret k
 ## Usage
 
 Login screen:
-![Login](public/images/login.png)
+![Login](./client/public/images/login.png)
+
+After the login screen you will be greeted with an emtpy homepage:
+![HomeScreen](./client/public/images/homescreen.png)
+
+After you enter a search term results will be shown like this:
+![Results](./client/public/images/search.png)
+
+After you click on Edit Data button you will get a form with inputs from that profile or repo you clicked on:
+![Edit](./client/public/images/edit.png)
+
+After you click save your json file will be created at ./server/files folder. Name of the file is generated based on the type of data you saved. If it is a users profile it will be saved as that users username, if it is a repo it will be saved as repo's name:
+![Json](./client/public/images/json.png)
+<br />
+![Jsonfile](./client/public/images/jsonfile.png)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
