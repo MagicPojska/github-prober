@@ -134,7 +134,7 @@ Uncheck WebHook! After that save your Client ID and Generate new client secret k
 2. Go to settings again, then Developer Settings and then Personal Access Tokens and generate a new one and save it.
 3. Clone the repo
    ```sh
-   git clone https://github.com/MagicPojska/github-prober
+   git clone https://github.com/MagicPojska/github-prober.git
    ```
 4. Go inside server folder
    ```sh
